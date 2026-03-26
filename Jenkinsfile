@@ -36,7 +36,8 @@ pipeline {
         stage('Format Check') {
             steps {
                 sh '''
-                    . "$HOME/.cargo/env"
+                    . "${CARGO_HOME}/env"
+                    #. "$HOME/.cargo/env"
                     cargo fmt --all -- --check
                 '''
             }
@@ -45,7 +46,8 @@ pipeline {
         stage('Clippy') {
             steps {
                 sh '''
-                    . "$HOME/.cargo/env"
+                    . "${CARGO_HOME}/env"
+                    #. "$HOME/.cargo/env"
                     cargo clippy --all-targets --all-features -- -D warnings -W clippy::pedantic
                 '''
             }
@@ -54,7 +56,8 @@ pipeline {
         stage('Test') {
             steps {
                 sh '''
-                    . "$HOME/.cargo/env"
+                    . "${CARGO_HOME}/env"
+                    #. "$HOME/.cargo/env"
                     cargo test --all-features
                 '''
             }
@@ -63,7 +66,8 @@ pipeline {
         stage('Release Build') {
             steps {
                 sh '''
-                    . "$HOME/.cargo/env"
+                    . "${CARGO_HOME}/env"
+                    #. "$HOME/.cargo/env"
                     cargo build --release --all-targets
                 '''
             }
