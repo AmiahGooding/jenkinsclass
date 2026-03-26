@@ -20,7 +20,7 @@ pipeline {
                 sh '''
                     set -eu
                     
-                    curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh -s -- -y --profile minimal
+                    curl -k --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh -s -- -y --profile minimal
                 
                     . "$HOME/.cargo/env"
                     /var/jenkins_home/.cargo/bin/rustup default stable
