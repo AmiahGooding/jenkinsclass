@@ -19,9 +19,9 @@ pipeline {
             steps {
                 sh '''
                     set -eu
-                    if ! command -v cargo >/dev/null 2>&1; then
-                        curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh -s -- -y --profile minimal
-                    fi
+                    
+                    curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh -s -- -y --profile minimal
+                
                     . "$HOME/.cargo/env"
                     /var/jenkins_home/.cargo/bin/rustup default stable
                     /var/jenkins_home/.cargo/bin/rustup component add clippy rustfmt
