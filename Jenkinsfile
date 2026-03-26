@@ -22,11 +22,11 @@ pipeline {
                     
                     curl -k --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh -s -- -y --profile minimal
                 
-                    . "$HOME/.cargo/env"
-                    /var/jenkins_home/.cargo/bin/rustup default stable
-                    /var/jenkins_home/.cargo/bin/rustup component add clippy rustfmt
+                    . "${CARGO_HOME}/env"
+                    "{CARGO_HOME}bin/rustup" default stable
+                    "{CARGO_HOME}bin/rustup" component add clippy rustfmt
                     rustup component add clippy rustfmt
-                    . "$HOME/.cargo/env"
+                    . "${CARGO_HOME}/env"
                     cargo --version
                     rustc --version
                 '''
